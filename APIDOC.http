@@ -1,0 +1,165 @@
+# USER ENDPOINTS=================
+
+# api call for creating user
+###
+POST http://127.0.0.1:8000/account/signup/
+Content-Type: application/json
+
+{
+    "username":"admin2",
+    "password":"admin2@123",
+    "email":"admin12@gmail.com"
+}
+
+#api call for token generation
+###
+POST http://127.0.0.1:8000/account/token/ 
+Content-Type: application/json
+
+{
+    "username":"admin2",
+    "password":"admin2@123"
+}
+
+
+# Film endpoints =====================
+
+# api call for listing movies
+###
+GET http://127.0.0.1:8000/movies/
+Accept: application/json
+Authorization: Token your_auth_token
+
+# api call creating movie
+###
+POST http://127.0.0.1:8000/movies/
+Content-Type: application/json
+Authorization: Token your_auth_token
+
+{
+    "title": "Parasite",
+    "description": "A poor family gradually becomes involved in the lives of a wealthy household, leading to unexpected consequences.",
+    "genre": "Thriller",
+    "release_date": "2019-05-30",
+    "duration": 132,
+    "rating": 8.5
+}
+
+# api call for retrieving a movie
+###
+GET http://127.0.0.1:8000/movies/2/
+Accept: application/json
+Authorization: Token your_auth_token
+
+
+# api call for updating a movie
+###
+PUT http://127.0.0.1:8000/movies/1/
+Content-Type: application/json
+Authorization: Token your_auth_token
+
+{
+    "title": "Interstellar",
+    "description": "A team of astronauts travels through a wormhole to find a habitable planet for humanity.",
+    "genre": "Sci-Fi",
+    "release_date": "2014-11-07",
+    "duration": 169,
+    "rating": 8.7
+}
+
+
+# api call for deleting a movie
+###
+DELETE http://127.0.0.1:8000/movies/1/
+Authorization: Token your_auth_token
+
+# MUSIC ENDPOINTS================================
+
+
+# api call for creating song
+###
+POST http://127.0.0.1:8000/movies/3/songs/
+Content-Type: application/json
+Authorization: Token your_auth_token
+
+{
+    "title": "Why So Serious?",
+    "artist": "Hans Zimmer",
+    "album": "The Dark Knight Original Motion Picture Soundtrack",
+    "genre": "Soundtrack",
+    "release_date": "2008-07-15",
+    "duration": 546
+}
+
+
+# api call for retrieving song
+###
+GET http://127.0.0.1:8000/songs/2/
+Authorization: Token your_auth_token
+
+
+# api call for updating song
+###
+PUT http://127.0.0.1:8000/songs/1/
+Content-Type: application/json
+Authorization: Token your_auth_token
+
+{
+    "title": "Cornfield Chase",
+    "artist": "Hans Zimmer",
+    "album": "Interstellar Soundtrack",
+    "genre": "Soundtrack",
+    "release_date": "2014-11-18",
+    "duration": 132
+}
+
+# api call for deleting song
+###
+DELETE http://127.0.0.1:8000/songs/1/
+Authorization: Token your_auth_token
+
+
+
+# RESPONSE ENDPOINTS =====================================
+
+# api call for creating review
+###
+POST http://127.0.0.1:8000/response/movies/2/review/
+Content-Type: application/json
+Authorization: Token your_auth_token
+
+{
+    "message": "One of the best movies I have watched recently. The music, screenplay, and character development were excellent.",
+    "rating": 10.0
+}
+
+# api call for listing reviews
+###
+GET http://127.0.0.1:8000/response/movies/2/review/
+Accept: application/json
+Authorization: Token your_auth_token
+
+
+# api call for retrieving a review
+###
+GET http://127.0.0.1:8000/response/review/7/
+Accept: application/json
+Authorization: Token your_auth_token
+
+
+# api call for updating a review
+###
+PUT http://127.0.0.1:8000/response/review/1/
+Content-Type: application/json
+Authorization: Token your_auth_token
+
+{
+    "message": "The movie was fantastic, with excellent performances and a brilliant screenplay.",
+    "rating": 9.0
+}
+
+
+# api call for deleting a review
+###
+DELETE http://127.0.0.1:8000/response/review/1/
+Authorization: Token your_auth_token
