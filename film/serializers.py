@@ -7,11 +7,16 @@ from film.models import Movie
 from music.models import Song
 from music.serializers import SongSerializer
 
+from response.models import Review
+from response.serializers import ReviewSerializer
+
 class MovieSerializer(serializers.ModelSerializer):
 
     song_count = serializers.SerializerMethodField(read_only=True)
 
     songs = serializers.SerializerMethodField(read_only=True)
+
+    reviews = serializers.SerializerMethodField(read_only=True)
     
     class Meta:
 
@@ -33,4 +38,10 @@ class MovieSerializer(serializers.ModelSerializer):
 
         return serializer.data
 
-    
+    def get_reviews(self,obj):
+
+        reviews = Review.objects.filter(movie=obj)
+
+        serializer = ReviewSerializer(reviews,many=True)
+
+        return serializer.data
